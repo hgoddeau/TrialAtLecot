@@ -9,6 +9,7 @@
 000900220913         Dcl-s char20 char(20);
 001000220913
 001100220913         char20 = %Subst(%char(%Timestamp(*Unique):*ISO0):9);
+001101220913
 001200220908
 001300220908         lFound = ('xxxx' in %List('yyy':'xxxx'));
 001400220908         For-each val in %list('yyy':'xxx');
