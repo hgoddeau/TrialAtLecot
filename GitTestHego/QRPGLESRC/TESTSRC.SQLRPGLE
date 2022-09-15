@@ -1,6 +1,6 @@
 000100220905       Ctl-Opt Main(Test) option(*nodebugio:*srcstmt:*NoShowCpy)
 000200220908               ActGrp(*Caller)
-000300220915               //Bnddir('XFSRV')
+000300220915               //   Bnddir('XFSRV')
 000400220905               DatFmt(*Iso);
 000500220908
 000600220908       Dcl-Proc Test;
