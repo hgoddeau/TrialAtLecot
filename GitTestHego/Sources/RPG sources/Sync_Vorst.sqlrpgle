@@ -1,3 +1,4 @@
+**Free
 Ctl-Opt Debug Option(*nodebugio:*srcstmt:*noshowcpy) ALWNULL(*USRCTL) DATFMT(*ISO)
               DftActGrp(*no) ActGrp(*new) Main(main) Bnddir('ACLVBBND');    
 
@@ -20,14 +21,14 @@ runCmd('STRCMTCTL LCKLVL(*CHG) CMTSCOPE(*ACTGRP)');
 
 Exec sql                                                     
 Select MSG,verwerkt into :bericht,:verwerkt from minsynclog  
-  where NU = timestamp(:nu) ;                                
+  where NU = timestamp(:iNu) ;                                
   IF SQLSTT <> '00000';                                      
-    dsply ('SYNC_VORST:' + nu + ' niet gevonden!') 'HENDRIK'; 
+    dsply ('SYNC_VORST:' + inu + ' niet gevonden!') 'HENDRIK'; 
     return;                                                  
   ENDIF;         
   
   if (verwerkt = 'Y');                                      
-   dsply ('SYNC_VORST:' + nu + ' al verwerkt!') 'HENDRIK'; 
+   dsply ('SYNC_VORST:' + inu + ' al verwerkt!') 'HENDRIK'; 
    return;                                                
 endif;     
 
@@ -43,7 +44,7 @@ exec sql Merge into LVK2REP as t
                               t.k2i9tx = u.comment,
                               t.k2k202 = 0,
                               t.k2c8nm = int(replace(u.vanaf, '-', '')),
-                              t.k2c9nm = int(replace(u.tot, '-', '')),
+                              t.k2c9nm = int(replace(u.tot, '-', ''))
   when not matched then insert 
     values (int(replace(u.vanaf, '-', '')), int(replace(u.tot, '-', '')), u.vorstzone, 0,
             u.comment, int(replace(u.vanaf, '-', '')), int(replace(u.tot, '-', '')));
@@ -61,7 +62,7 @@ endif
 exec sql update LVK2REP set k2k202 = get#Werkdagen(K2KNDD, K2KODD) where k2k202 = 0;
 
 if sqlError='N';
-    exec sql update minsynclog set verwerkt = 'Y' where nu = timestamp(:nu);
+    exec sql update minsynclog set verwerkt = 'Y' where nu = timestamp(:iNu);
     exec sql commit;
 endif;
 
