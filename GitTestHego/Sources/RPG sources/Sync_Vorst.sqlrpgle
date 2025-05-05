@@ -4,10 +4,6 @@ Ctl-Opt Debug Option(*nodebugio:*srcstmt:*noshowcpy) ALWNULL(*USRCTL) DATFMT(*IS
 
 /include QCpylesrc,ALGSRVPT  
 
-exec sql set option commit=*CHG;                              
-exec sql set transaction isolation level READ UNCOMMITTED,    
-                                        READ WRITE;           
-
 Dcl-Proc Main;
 Dcl-Pi *N;
     iNu char(26) const;
@@ -16,8 +12,13 @@ end-pi;
 Dcl-S bericht char(32000) ;
 Dcl-S verwerkt char(1) ;
 Dcl-S SqlError char(1) inz('N') ;
+Dcl-S sqlMsg char(512) ;
 
 runCmd('STRCMTCTL LCKLVL(*CHG) CMTSCOPE(*ACTGRP)'); 
+exec sql set option commit=*CHG;                              
+exec sql set transaction isolation level READ UNCOMMITTED,    
+                                        READ WRITE;           
+
 
 Exec sql                                                     
 Select MSG,verwerkt into :bericht,:verwerkt from minsynclog  
@@ -53,10 +54,10 @@ if sqlstate > '02';
     sqlError='Y';
     exec sql get diagnostics exception 1
         :sqlMsg = message_text;
-    dsply ('SQLSTATE: ' + sqlstate + ' SQLCODE: ' + sqlcode + ' SQLERR: ' + sqlMsg) 'HENDRIK';
+    dsply ('SQLSTATE: ' + sqlstate + ' SQLCODE: ' + %char(sqlcode) ) 'HENDRIK';
     exec sql rollback;
     return;
-endif
+endif;
 
 // Update LVK2REP met aantal vorstdagen
 exec sql update LVK2REP set k2k202 = get#Werkdagen(K2KNDD, K2KODD) where k2k202 = 0;
