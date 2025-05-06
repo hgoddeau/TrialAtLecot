@@ -25,7 +25,7 @@ Select MSG,verwerkt into :bericht,:verwerkt from minsynclog
   where NU = timestamp(:iNu) ;
 
 // Enkel Json behouden in bericht
-exec sql set :bericht = regexp_replace(:bericht, '^.+;', '');
+exec sql set :bericht = regexp_replace(:bericht, '^[^{]+;', '');
 
   IF SQLSTT <> '00000';
     dsply ('SYNC_VORST:' + inu + ' niet gevonden!') 'HENDRIK';
