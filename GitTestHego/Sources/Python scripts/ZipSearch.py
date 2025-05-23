@@ -24,6 +24,6 @@ def zoek_in_zip(zip_bestand, zoekterm):
 
 # Gebruik het script
 os.chdir(r"\\CIVI5P20\xb400\xml\PRD\CTW")
-zip_pad = "CTW_2025-04-15.zip"  # Pas dit aan met de juiste ZIP-bestandspad
-zoekterm = "96080878280"
+zip_pad = "CTW_2025-05-07.zip"  # Pas dit aan met de juiste ZIP-bestandspad
+zoekterm = "03A039XYBDNCZ"
 zoek_in_zip(zip_pad, zoekterm)

@@ -31,8 +31,8 @@ def zoek_in_map(map_pad, zoekterm):
     print("Done")
 
 # Gebruik de functie
-map_pad = r"\\CIVI5P20\xb400\xml\PRD\CTW"  # Vervang dit met de map die je wilt doorzoeken
-#map_pad = r"\\CIVI5P20\xml\in\cw01\2025\02"  # Vervang dit met de map die je wilt doorzoeken
-zoekterm = r"96080878280"  # Vervang met de tekst die je zoekt
+#map_pad = r"\\CIVI5P20\xb400\xml\PRD\CTW"  # Vervang dit met de map die je wilt doorzoeken
+map_pad = r"\\CIVI5P20\xml\in\cw01\2025\03"  # Vervang dit met de map die je wilt doorzoeken
+zoekterm = r"SocialActionReasonUnemployment"  # Vervang met de tekst die je zoekt
 
 zoek_in_map(map_pad, zoekterm)

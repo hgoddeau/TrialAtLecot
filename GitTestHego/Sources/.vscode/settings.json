@@ -1,0 +1,24 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "files.associations": {
+    "*.rpgle": "rpgle"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "halcyontechltd.vscode-rpgle",
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 4,
+  "editor.autoIndent": "advanced",
+  "editor.rulers": [120],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.rpgle": "always"
+  },
+  "terminal.integrated.profiles.windows": {
+  "Git Bash": {
+    "path": "C:\\Users\\hgoddeau\\AppData\\Local\\Programs\\Git\\git-bash.exe"
+
+  }
+},
+"terminal.integrated.defaultProfile.windows": "Git Bash"
+}
