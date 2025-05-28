@@ -1,0 +1,39 @@
+**Free
+ctl-opt dftactgrp(*no) actgrp(*caller);
+
+// Prototypes
+dcl-pr CalcBarema extpgm('CALCBAREMA');
+end-pr;
+
+dcl-proc assert;
+  dcl-pi *n result ind;
+  dcl-pi *n expected ind;
+  dcl-pi *n msg varchar(100);
+  if result <> expected;
+    dsply ('FAIL: ' + msg);
+  else;
+    dsply ('PASS: ' + msg);
+  endif;
+end-proc;
+
+// Test 1: SITUAT = 'NIE'
+dcl-s #1GWNB packed(7:0) inz(202201);
+dcl-s BYEINB packed(7:0) inz(202001);
+dcl-s #1A1CD char(2) inz('05');
+dcl-s SITUAT char(3) inz('');
+// ... (other required variables)
+CalcBarema();
+assert(SITUAT = 'NIE': *on: 'SITUAT should be NIE for new table');
+
+// Test 2: SITUAT = 'OUD'
+#1GWNB = 201801;
+BYEHNB = 201701;
+#1A1CD = '57';
+SITUAT = '';
+CalcBarema();
+assert(SITUAT = 'OUD': *on: 'SITUAT should be OUD for old table');
+
+// Add more tests for table lookups, error conditions, etc.
+
+*inlr = *on;
+return;

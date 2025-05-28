@@ -1,0 +1,4 @@
+{"scripts": {
+  "lint:rpg": "rpglint --config rpglint.json"
+}
+}
